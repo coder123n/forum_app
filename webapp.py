@@ -59,13 +59,8 @@ def authorized():
             #save user data and set log in message
             session['github_token'] = (resp['access_token'], '')
             session['user_data'] = github.get('user').data
-			
-            if session['user_data']['bio'] == 'SBHS CS peeps':
-                username_list.append(session['user_data']['login'])
-                user_follow.append(session['user_data']['followers'])
-                message = 'You were successfully logged in as ' + session['user_data']['login'] + '.'
-            else:
-              message = "I'm sorry, you are not qualified"
+            message = 'You were successfully logged in as ' + session['user_data']['login'] + '.'
+
         except Exception as inst:
             #clear the session and give error message
             session.clear()
